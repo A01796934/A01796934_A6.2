@@ -1,0 +1,14 @@
+[
+    {
+        "hotel_id": 1,
+        "name": "Grand Fiesta Americana",
+        "location": "Cancun",
+        "rooms": 150
+    },
+    {
+        "hotel_id": 2,
+        "name": "Hotel Camino Real",
+        "location": "Monterrey",
+        "rooms": 200
+    }
+]
