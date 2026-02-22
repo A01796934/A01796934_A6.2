@@ -10,5 +10,11 @@
         "name": "Hotel Camino Real",
         "location": "Monterrey",
         "rooms": 200
+    },
+    {
+        "hotel_id": 1,
+        "name": "Hotel Maya",
+        "location": "Cancun",
+        "rooms": 50
     }
 ]

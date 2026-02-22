@@ -8,5 +8,10 @@
         "customer_id": 102,
         "name": "Carlos Rivera",
         "email": "carlos@correo.com"
+    },
+    {
+        "customer_id": 101,
+        "name": "Fernando Perez",
+        "email": "fer@mail.com"
     }
 ]
