@@ -36,8 +36,11 @@ class Hotel:
                 print(f"Error loading file: {error}. Starting new.")
 
         hotels.append(self.to_dict())
-        with open(self.file_path, 'w', encoding='utf-8') as file:
-            json.dump(hotels, file, indent=4)
+        try:
+            with open(self.file_path, 'w', encoding='utf-8') as file:
+                json.dump(hotels, file, indent=4)
+        except (PermissionError, FileNotFoundError) as error:
+            print(f"Error saving to file: {error}")
 
     @staticmethod
     def delete_hotel(hotel_id):
@@ -48,10 +51,14 @@ class Hotel:
         try:
             with open(file_path, 'r', encoding='utf-8') as file:
                 hotels = json.load(file)
-            filtered_hotels = [h for h in hotels if h['hotel_id'] != hotel_id]
+            # Verificar si el ID existe antes de filtrar
+            if not any(h.get('hotel_id') == hotel_id for h in hotels):
+                return False
+
+            remaining = [h for h in hotels if h.get('hotel_id') != hotel_id]
             with open(file_path, 'w', encoding='utf-8') as file:
-                json.dump(filtered_hotels, file, indent=4)
+                json.dump(remaining, file, indent=4)
             return True
-        except json.JSONDecodeError:
+        except (json.JSONDecodeError, KeyError):
             print("Error: Invalid data format in file.")
             return False
